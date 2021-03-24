@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">project</string>
+    <string name="title_activity_homepage">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Update</string>
+    <string name="title_notifications">Daily reports</string>
+    <string name="title_links">Useful Links</string>
+    <string name="large_text"></string>
+</resources>
