@@ -15,12 +15,13 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".login1" />
         <activity android:name=".register1" />
+        <activity android:name=".update" />
+        <activity android:name=".useful_links" />
     </application>
 
 </manifest>
