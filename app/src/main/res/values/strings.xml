@@ -4,5 +4,5 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Update</string>
     <string name="title_notifications">Daily reports</string>
-    <string name="large_text"></string>
+    <string name="link1"><a href="http://www.google.com">http://www.google.com</a></string>
 </resources>
