@@ -1,5 +1,5 @@
 package com.example.project;
-
+import java.time.LocalDate;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -19,12 +19,14 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table USERS (id integer primary key, name text, email text unique, password text)");
         db.execSQL("create table HWA (email text primary key, height number default 0, weight number default 0, age number default 0)");
+        db.execSQL("create table BSC (email text ,date datetime default current_timestamp , BP number default 0,sugar number default 0, calorie number default 0)");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS USERS");
         db.execSQL("DROP TABLE IF EXISTS HWA");
+        db.execSQL("DROP TABLE IF EXISTS BSC");
         onCreate(db);
     }
 
@@ -50,6 +52,30 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put("age", age);
         db.update("HWA", contentValues, "email=?", new String[]{email});
         return true;
+    }
+
+    public boolean addBSC(String email, int BP, int sugar, int cal) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues Values = new ContentValues();
+        Values.put("BP", BP);
+        Values.put("Sugar", sugar);
+        Values.put("Calorie", cal);
+        db.insert("BSC",null, Values);
+        return true;
+    }
+
+    public String getdata(String email) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res =  db.rawQuery( "select * from BSC", null );
+        if (res.getCount() == 0)
+            return "";
+        res.moveToFirst();
+        String row_values = "";
+        do {
+            for(int i = 0 ; i < res.getColumnCount(); i++)
+                row_values = row_values + " || " + res.getString(i);
+        } while (res.moveToNext());
+        return row_values;
     }
 
     public int getHeight(String email) {

@@ -72,5 +72,71 @@ public class useful_links extends AppCompatActivity {
             weightloss.addView(textView);
         }
 
+        LinearLayout bp= findViewById(R.id.bp);
+        // bp array
+        String[] bpList = {
+                "https://www.medicalnewstoday.com/articles/318716",
+                "https://www.medicalnewstoday.com/articles/322284",
+                "https://medlineplus.gov/howtopreventhighbloodpressure.html",
+                "https://www.mayoclinic.org/diseases-conditions/high-blood-pressure/in-depth/high-blood-pressure/art-20046974",
+                "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4366416/"
+        };
+
+        for( int i = 0; i <bpList.length; i++ ) {
+            TextView textView = new TextView(this);
+            textView.setText(bpList[i]);
+            textView.setTextColor(Color.BLACK);
+            textView.setTextSize((float) 20);
+            Linkify.addLinks(textView, Linkify.WEB_URLS);
+            textView.setLinksClickable(true);
+            textView.setPadding(50, 50, 50, 50);
+
+            bp.addView(textView);
+        }
+
+        LinearLayout stress= findViewById(R.id.SM);
+        // stress array
+        String[] stressList = {
+                "https://www.helpguide.org/articles/stress/stress-management.htm",
+                "https://www.medicalnewstoday.com/articles/145855",
+                "https://www.medicinenet.com/stress/article.htm",
+                "https://www.verywellmind.com/stress-management-4157211",
+                "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4366416/"
+        };
+
+        for( int i = 0; i <stressList.length; i++ ) {
+            TextView textView = new TextView(this);
+            textView.setText(stressList[i]);
+            textView.setTextColor(Color.BLACK);
+            textView.setTextSize((float) 20);
+            Linkify.addLinks(textView, Linkify.WEB_URLS);
+            textView.setLinksClickable(true);
+            textView.setPadding(50, 50, 50, 50);
+
+            stress.addView(textView);
+        }
+
+        LinearLayout health= findViewById(R.id.HL);
+        // health array
+        String[] healthList = {
+                "https://www.foundationforpn.org/living-well/lifestyle/#:~:text=To%20maintain%20a%20healthy%20lifestyle,the%20moment%20you%20resume%20eating.",
+                "https://www.medicinenet.com/healthy_living/article.htm",
+                "https://www.webmd.com/diet/features/4-steps-healthy-lifestyle",
+                "https://www.eufic.org/en/healthy-living/article/10-healthy-lifestyle-tips-for-adults",
+                "https://familydoctor.org/what-you-can-do-to-maintain-your-health/"
+        };
+
+        for( int i = 0; i <healthList.length; i++ ) {
+            TextView textView = new TextView(this);
+            textView.setText(healthList[i]);
+            textView.setTextColor(Color.BLACK);
+            textView.setTextSize((float) 20);
+            Linkify.addLinks(textView, Linkify.WEB_URLS);
+            textView.setLinksClickable(true);
+            textView.setPadding(50, 50, 50, 50);
+
+            health.addView(textView);
+        }
+
     }
 }
