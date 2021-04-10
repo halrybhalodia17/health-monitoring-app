@@ -22,6 +22,7 @@
         <activity android:name=".register1" />
         <activity android:name=".update" />
         <activity android:name=".useful_links" />
+        <activity android:name=".PastRecords"/>
     </application>
 
 </manifest>

@@ -10,16 +10,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.project.DBHelper;
+import com.example.project.PastRecords;
 import com.example.project.R;
 import com.example.project.homepage;
 
@@ -66,7 +63,7 @@ public class NotificationsFragment extends Fragment {
 
         if (dbptr.addBSC(this.email, Bloodpressure, Sugar, Calorie_intake)) {
             Toast.makeText(this.getActivity().getApplicationContext(), "Data Updated.", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(this.getActivity(), homepage.class);
+            Intent intent = new Intent(this.getActivity(), PastRecords.class);
             startActivity(intent);
         } else {
             Toast.makeText(this.getActivity().getApplicationContext(), "Some error occurred. Please check logs.", Toast.LENGTH_SHORT).show();
@@ -74,8 +71,7 @@ public class NotificationsFragment extends Fragment {
     }
 
     public void getData(View view) {
-        Log.d("debug", "Hello" + this.email);
-        String rows = dbptr.getdata(this.email);
-        Log.d("debug", rows);
+        Intent intent = new Intent(this.getActivity(), PastRecords.class);
+        startActivity(intent);
     }
 }

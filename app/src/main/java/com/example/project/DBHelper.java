@@ -1,11 +1,9 @@
 package com.example.project;
-import java.time.LocalDate;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
 public class DBHelper extends SQLiteOpenHelper {
 
@@ -19,7 +17,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table USERS (id integer primary key, name text, email text unique, password text)");
         db.execSQL("create table HWA (email text primary key, height number default 0, weight number default 0, age number default 0)");
-        db.execSQL("create table BSC (email text ,date datetime default current_timestamp , BP number default 0,sugar number default 0, calorie number default 0)");
+        db.execSQL("create table BSC (email text, date datetime default current_timestamp, BP number default 0, sugar number default 0, calorie number default 0, PRIMARY KEY (email, date))");
     }
 
     @Override
@@ -57,23 +55,33 @@ public class DBHelper extends SQLiteOpenHelper {
     public boolean addBSC(String email, int BP, int sugar, int cal) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues Values = new ContentValues();
+        Values.put("email", email);
         Values.put("BP", BP);
         Values.put("Sugar", sugar);
         Values.put("Calorie", cal);
-        db.insert("BSC",null, Values);
+        db.insert("BSC", null, Values);
+        return true;
+    }
+
+    public boolean changePwd(String email, String pwd) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("password", pwd);
+        db.update("USERS", contentValues, "email=?", new String[]{email});
         return true;
     }
 
     public String getdata(String email) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res =  db.rawQuery( "select * from BSC", null );
+        Cursor res =  db.rawQuery( "select * from BSC WHERE lower(email)=lower('" + email + "')", null );
         if (res.getCount() == 0)
             return "";
         res.moveToFirst();
         String row_values = "";
         do {
             for(int i = 0 ; i < res.getColumnCount(); i++)
-                row_values = row_values + " || " + res.getString(i);
+                row_values += res.getString(i) + " | ";
+            row_values += '\n';
         } while (res.moveToNext());
         return row_values;
     }
