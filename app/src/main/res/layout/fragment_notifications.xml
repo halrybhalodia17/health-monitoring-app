@@ -30,7 +30,7 @@
         android:layout_marginStart="70dp"
         android:layout_marginLeft="70dp"
         android:layout_marginTop="30dp"
-        android:text="Add Blood pressure level:"
+        android:text="Blood pressure level(in mmHG):"
         android:textColor="#0000A0"
         android:textSize="17dp"/>
 
@@ -50,7 +50,7 @@
         android:layout_marginStart="70dp"
         android:layout_marginLeft="70dp"
         android:layout_marginTop="10dp"
-        android:text="Add Blood sugar level :"
+        android:text="Blood sugar level(in mg/dL) :"
         android:textColor="#0000A0"
         android:textSize="17dp" />
 
@@ -69,7 +69,7 @@
         android:layout_marginStart="70dp"
         android:layout_marginLeft="70dp"
         android:layout_marginTop="10dp"
-        android:text="Add calorie intake:"
+        android:text="Add calorie intake(in Kcal):"
         android:textColor="#0000A0"
         android:textSize="17dp"/>
 
@@ -96,14 +96,14 @@
 
     <Button
         android:id="@+id/getDataBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
         android:backgroundTint="#ADD8E6"
         android:textSize="20dp"
         android:textColor="@color/black"
-        android:text="Past\nRecords" />
+        android:text="Past Records" />
 
 
 </LinearLayout>
